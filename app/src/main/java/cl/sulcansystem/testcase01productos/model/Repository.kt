@@ -23,12 +23,10 @@ class Repository (context : Context) {
 
         call.enqueue(object : Callback<List<Producto>> {
             override fun onFailure(call: Call<List<Producto>>, t: Throwable) {
-                Log.d("Adapter", "Error al cargar heroes")
             }
 
             override fun onResponse(call: Call<List<Producto>>, response: Response<List<Producto>>) {
-                Log.d("Adapter", "${response.code()}")
-                Log.d("Adapter", "${response.body()}")
+
                 saveDatabase(productoConverter(response.body()!!))
             }
         })
@@ -44,6 +42,5 @@ class Repository (context : Context) {
     }
     fun getDetalles(param1: String): LiveData<EntityTestCase01> {
         return  productos.getDaoTest().getDetalles(param1.toInt())
-        //return heroDatabase.getHeroeDao().getHeroe(param1.toInt())
     }
 }

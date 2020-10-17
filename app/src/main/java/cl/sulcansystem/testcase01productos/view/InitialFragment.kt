@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import cl.sulcansystem.testcase01productos.R
 import cl.sulcansystem.testcase01productos.model.pojos.ProductoMini
 import cl.sulcansystem.testcase01productos.viewModel.ProductoViewModel
+import kotlinx.android.synthetic.main.fragment_initial.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,7 +24,7 @@ private const val ARG_PARAM2 = "param2"
  */
 class InitialFragment : Fragment() {
 
-    private var heroList = ArrayList<ProductoMini>()
+    private var productoList = ArrayList<ProductoMini>()
     private lateinit var adapter : ProductoAdapter
 
     // TODO: Rename and change types of parameters
@@ -68,10 +69,12 @@ class InitialFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        adapter = ProductoAdapter(productoList)
+        recycler.adapter = adapter
         val heroeViewModel : ProductoViewModel by activityViewModels()
 
         heroeViewModel.listProducto.observe(viewLifecycleOwner, Observer {
-            //adapter.updateItems(it)
+            adapter.updateItems(it)
         })
     }
 }
