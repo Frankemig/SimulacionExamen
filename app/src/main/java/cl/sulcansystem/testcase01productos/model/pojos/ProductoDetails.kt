@@ -1,6 +1,6 @@
 package cl.sulcansystem.testcase01productos.model.pojos
 
-data class Producto (
+data class ProductoDetails (
 
     val id : Int,
     val name : String,

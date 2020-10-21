@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import cl.sulcansystem.testcase01productos.R
-import cl.sulcansystem.testcase01productos.model.pojos.ProductoMini
+import cl.sulcansystem.testcase01productos.model.pojos.ProductoList
 import cl.sulcansystem.testcase01productos.viewModel.ProductoViewModel
 import kotlinx.android.synthetic.main.fragment_initial.*
 
@@ -24,7 +24,7 @@ private const val ARG_PARAM2 = "param2"
  */
 class InitialFragment : Fragment() {
 
-    private var productoList = ArrayList<ProductoMini>()
+    private var productoList = ArrayList<ProductoList>()
     private lateinit var adapter : ProductoAdapter
 
     // TODO: Rename and change types of parameters

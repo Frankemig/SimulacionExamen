@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import cl.sulcansystem.testcase01productos.R
-import cl.sulcansystem.testcase01productos.model.pojos.ProductoMini
+import cl.sulcansystem.testcase01productos.model.pojos.ProductoList
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_producto.view.*
 
-class ProductoAdapter(private var productoList: MutableList<ProductoMini>) : RecyclerView.Adapter<ProductoAdapter.ProductoViewHolder>() {
+class ProductoAdapter(private var productoList: MutableList<ProductoList>) : RecyclerView.Adapter<ProductoAdapter.ProductoViewHolder>() {
 
 
     inner class ProductoViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
@@ -29,8 +29,7 @@ class ProductoAdapter(private var productoList: MutableList<ProductoMini>) : Rec
     override fun onBindViewHolder(holder: ProductoViewHolder, position: Int) {
         Picasso.get().load(productoList.get(position).image).into(holder.image)
         holder.productoName.text=productoList.get(position).name
-        holder.productoPrecio.text = productoList.get(position).price
-        holder.productoDescription.text = productoList.get(position).description
+        holder.productoPrecio.text = productoList.get(position).price.toString()
 
         holder.itemView.setOnClickListener{
             Log.d("ViewHolder", "${productoList.get(position)}")
@@ -40,7 +39,7 @@ class ProductoAdapter(private var productoList: MutableList<ProductoMini>) : Rec
     override fun getItemCount(): Int {
         return productoList.size
     }
-    fun updateItems(it: List<ProductoMini>) {
+    fun updateItems(it: List<ProductoList>) {
         productoList.clear()
         productoList.addAll(it)
         notifyDataSetChanged()

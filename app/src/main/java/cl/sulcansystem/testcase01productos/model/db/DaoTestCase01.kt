@@ -5,17 +5,14 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import cl.sulcansystem.testcase01productos.model.pojos.ProductoMini
+import cl.sulcansystem.testcase01productos.model.pojos.ProductoList
 
-@Dao
+    @Dao
     interface DaoTestCase01 {
     @Query("SELECT * FROM productos")
-    fun getProductos() : LiveData<List<EntityTestCase01>>
+    fun getProductos() : LiveData<List<ProductoList>>
 
-    @Query ("SELECT name, id, image, description, price FROM productos")
-    fun getProductosMini() : LiveData<List<ProductoMini>>
-
-    @Query ("SELECT * FROM productos WHERE id=:id")
+     @Query ("SELECT * FROM productos WHERE id=:id")
     fun getDetalles(id: Int) : LiveData<EntityTestCase01>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
